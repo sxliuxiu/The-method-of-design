@@ -27,17 +27,32 @@ package single;
 	public static Single getInstance(){
 		return s;
 	}
-}
-*/
+}*/
+
 //对象是方法调用时，才初始化，也叫做对象的延时加载。称为:懒汉式。
 //如果多个人同时调用懒汉式会出现问题
 //Single类进内存时，对象还没有存在，只有调用了getInstance的方法时，才建立对象。
-public class Single{
+/*public class Single{
 	private static Single s = null;
 	private Single(){}
 	public static Single getInstance() {
 		if (s == null) {
 			s = new Single();
+		}
+		return s;
+	}
+}*/
+public class Single{
+	private static Single s = null;
+	private Single(){}
+	/*public static synchronized single getInstance()*/
+	public static Single getInstance() {
+		if (s == null) {
+			synchronized (Single.class) {
+				if (s==null) {
+					s = new Single();
+				}
+			}
 		}
 		return s;
 	}
