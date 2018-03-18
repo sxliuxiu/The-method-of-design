@@ -12,6 +12,7 @@ public class CoffeeWithHook extends CaffeineBeverageWithHook {
 	void addCondiments() {
 		System.out.println("Adding Sugar and Milk");
 	}
+	//覆盖了钩子，提供自己的功能
 	public boolean customerWantsCondiments(){
 		String answer = getUserInfo();
 		
